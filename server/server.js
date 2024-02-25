@@ -8,10 +8,10 @@ app.use(express.json());
 //get employees data
 app.get("/api/employees", (req, res) => {
   const employees = getDummyEmployees(5); //get 5 dummy employees
-  if(employees.length > 0){
+  if (employees.length > 0) {
     res.json(employees);
   } else {
-    res.status(404).json({error: "employees data not found"})
+    res.status(404).json({ error: "employees data not found" });
   }
 });
 
@@ -40,6 +40,7 @@ function getDummyEmployees(employeeCount) {
     const employee = {
       id: i + 1,
       name: faker.person.fullName(),
+      image: faker.image.avatar(),
       submission_date: faker.date
         .recent()
         .toLocaleDateString(undefined, options),
